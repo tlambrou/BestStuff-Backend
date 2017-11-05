@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         // User.hasMany(models.Item);
       }
     }
+
   });
   return User;
 };

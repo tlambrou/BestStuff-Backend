@@ -1,11 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Item = sequelize.define('Item', {
-    name: DataTypes.STRING,
+    name: {type: DataTypes.STRING, allowNull: false},
     long: DataTypes.DECIMAL,
     lat: DataTypes.DECIMAL,
     place_id: DataTypes.STRING,
-    place_name: DataTypes.STRING,
+    place_name: {type: DataTypes.STRING, allowNull:false},
     photo_url: DataTypes.STRING
   }, {
     classMethods: {
