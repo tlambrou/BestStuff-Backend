@@ -1,0 +1,34 @@
+{
+  "name": "beststuff-server",
+  "version": "1.0.0",
+  "description": "Item review app for Make School's Web 3 - Advanced Web Patterns",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tlambrou/BestStuff.git"
+  },
+  "keywords": [
+    "best",
+    "stuff",
+    "beststuff",
+    "reviews",
+    "nodejs",
+    "sequelize",
+    "express"
+  ],
+  "author": "Tassos Lambrou, Briant Elliot, Alirie Gray, Rohan Mishra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tlambrou/BestStuff/issues"
+  },
+  "homepage": "https://github.com/tlambrou/BestStuff#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "pg": "^7.4.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.22.4"
+  }
+}
