@@ -20,7 +20,6 @@ module.exports = (app) => {
 
   // CREATE
   app.post('/items/create', (req, res) => {
-    req.body.UserId = req.params.id;
 
     db.Item.create(req.body).then((item) => {
       res.status(200);
