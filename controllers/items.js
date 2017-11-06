@@ -7,7 +7,6 @@ module.exports = (app) => {
   // INDEX
   app.get('/items', (req, res) => {
     res.json({message: "Success"})
-
   });
   // SHOW
   app.get('/items/:id', (req, res) => {

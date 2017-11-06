@@ -2,6 +2,14 @@ var db = require('../models');
 
 module.exports = (app) => {
 
+  app.get('/contests', (req, res) => {
+    res.json({message: "Success!"});
+    // db.Contest.findAll().then((contests) => {
+    //   console.log(contests);
+    //   res.json(contests);
+    // })
+  })
+
   // SHOW
   app.get('/contest/:id', (req, res) => {
     const contestId = req.params.id;
