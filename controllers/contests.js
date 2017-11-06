@@ -2,12 +2,16 @@ var db = require('../models');
 
 module.exports = (app) => {
 
+  // INDEX
   app.get('/contests', (req, res) => {
-    res.json({message: "Success!"});
-    // db.Contest.findAll().then((contests) => {
-    //   console.log(contests);
-    //   res.json(contests);
-    // })
+    // res.json({message: "Success!"});
+    db.Contest.findAll().then((contests) => {
+      res.json(contests);
+    }).catch(err => {
+      if (err) {
+        res.json(err)
+      }
+    })
   })
 
   // SHOW
@@ -15,7 +19,7 @@ module.exports = (app) => {
     const contestId = req.params.id;
     db.Contest.findById(contestId).then((contest) => {
       res.json(contest);
-    });
+    })
   });
 
   // CREATE
