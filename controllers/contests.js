@@ -1,4 +1,4 @@
-var db = require('../models')
+var db = require('../models');
 
 module.exports = (app) => {
 
@@ -12,8 +12,8 @@ module.exports = (app) => {
 
   // CREATE
   app.post('/contest/create', (req, res) => {
-    req.body.UserId = req.params.id;
-
+    //req.body.UserId = req.params.id;
+    console.dir(req.body);
     db.Contest.create(req.body).then((contest) => {
       res.status(200);
       res.json({msg: 'successfully added', contest});
