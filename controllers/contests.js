@@ -18,14 +18,13 @@ module.exports = (app) => {
   app.get('/contests/:id', (req, res) => {
     const contestId = req.params.id;
     db.Contest.findById(contestId).then((contest) => {
-      res.json(contest);
+      res.json(contest)
     })
   });
 
   // CREATE
   app.post('/contests/create', (req, res) => {
-    //req.body.UserId = req.params.id;
-    console.dir(req.body);
+
     db.Contest.create(req.body).then((contest) => {
       res.status(200);
       res.json({msg: 'successfully added', contest});
