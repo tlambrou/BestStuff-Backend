@@ -23,8 +23,7 @@ module.exports = (app) => {
             password: hash
           }
           db.User.create(newUser).then((user) => {
-          res.status(200);
-          res.json({msg: 'successfully added', user});
+          return res.status(200).send({ message: 'Created user' });
         }).catch((err) => {
           if (err) {
             res.json(err);
@@ -71,7 +70,6 @@ module.exports = (app) => {
           res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
           res.status(200).send({message: "Successfully logged in"});
           console.log("Logged in!")
-          res.redirect('/');
         } else {
           return res.status(401).send({ message: 'Wrong username or password' });
         }
@@ -84,5 +82,4 @@ module.exports = (app) => {
     res.clearCookie('nToken');
     res.redirect('/');
   });
-
 };
