@@ -70,17 +70,13 @@ module.exports = (app) => {
           var token = jwt.sign({ id: user.id }, "process.env.SECRET", { expiresIn: "60 days" });
           res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
           res.status(200).send({message: "Successfully logged in"});
+          console.log("Logged in!")
           res.redirect('/');
         } else {
           return res.status(401).send({ message: 'Wrong username or password' });
         }
       })
     })
-  })
-
-  // just redirects in case user tries to get login route
-  app.get('/login', function(req, res) {
-    res.redirect('/')
   })
 
   // LOGOUT
