@@ -1,4 +1,5 @@
 var db = require('../models')
+var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt')
 
 module.exports = (app) => {
@@ -29,21 +30,9 @@ module.exports = (app) => {
             res.json(err);
           }
         });
-      });               
+      });
     });
   });
-  
-  app.post('/login', (req, res) => {
-    var userToFind = req.body.username;
-    db.User.findOne({ where: {username: userToFind } }).then(function(user) {
-      bcrypt.compare(req.body.password, user.password, function(err, isMatch) {
-        done(err, isMatch);
-      })
-    })
-    
-    console.log(userToFind);
-    res.json(userToFind);
-  })
 
   // UPDATE
   app.put('/users/:id/edit', (req, res) => {
@@ -70,6 +59,34 @@ module.exports = (app) => {
         res.json(err);
       }
     });
+  });
+
+  // LOGIN
+  app.post('/login', (req, res) => {
+    var userToFind = req.body.username;
+    db.User.findOne({ where: {username: userToFind } }).then(function(user) {
+      bcrypt.compare(req.body.password, user.password, function(err, isMatch) {
+        if (isMatch) {
+          var token = jwt.sign({ id: user.id }, "process.env.SECRET", { expiresIn: "60 days" });
+          res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
+          res.status(200).send({message: "Successfully logged in"});
+          res.redirect('/');
+        } else {
+          return res.status(401).send({ message: 'Wrong username or password' });
+        }
+      })
+    })
+  })
+
+  // just redirects in case user tries to get login route
+  app.get('/login', function(req, res) {
+    res.redirect('/')
+  })
+
+  // LOGOUT
+  app.get('/logout', function(req, res) {
+    res.clearCookie('nToken');
+    res.redirect('/');
   });
 
 };
