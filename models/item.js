@@ -16,5 +16,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
+  Item.associate = (models) => {
+    Item.belongsTo(models.Contest)
+  }
+
   return Item;
 };
