@@ -17,14 +17,32 @@ module.exports = (app) => {
   // SHOW
   app.get('/contests/:id', (req, res) => {
     const contestId = req.params.id;
-    db.Contest.findById(contestId).then((contest) => {
-      res.json(contest)
+    var data = {}
+    db.Contest.findById(contestId).then(contest => {
+      data = contest.dataValues
+      console.log("Here is the Contest Query Data: ", data)
+      db.Item.findAll({
+        where: { contestId: contestId }
+      }).then(resItems => {
+        console.log("*****Here is resItems: ", resItems)
+        data['items'] = resItems.map(item => {
+          return item.dataValues
+        })
+        console.log("*****Here is data: ", data)
+
+        res.json(data)
+      }).catch(err => {
+        console.log(err)
+        res.json(err)
+      })
+    }).catch(err => {
+      console.log(err)
+      res.json(err)
     })
   });
 
   // CREATE
   app.post('/contests/create', (req, res) => {
-
     db.Contest.create(req.body).then((contest) => {
       res.status(200);
       res.json({msg: 'successfully added', contest});

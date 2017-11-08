@@ -20,10 +20,8 @@ module.exports = (app) => {
   // CREATE
   app.post('/items/create', (req, res) => {
     console.log("HERE IS THE BODY", req.body)
-    const contestId = req.body.ContestId
 
-    db.Item.create(req.body, { include: {model: [Contest]}}).then((item) => {
-      res.status(200);
+    db.Item.create(req.body).then((item) => {
       res.json({msg: 'successfully added', item});
     }).catch((err) => {
       if (err) {

@@ -6,19 +6,15 @@ module.exports = (sequelize, DataTypes) => {
     lat: DataTypes.DECIMAL,
     place_id: DataTypes.STRING,
     place_name: {type: DataTypes.STRING, allowNull:false},
-    photo_url: DataTypes.STRING
+    photo_url: DataTypes.STRING,
+    contestId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        Item.belongsTo(models.Contest);
       }
     }
   });
-
-  Item.associate = (models) => {
-    Item.belongsTo(models.Contest)
-  }
 
   return Item;
 };
