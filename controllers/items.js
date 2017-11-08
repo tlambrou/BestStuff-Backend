@@ -19,8 +19,20 @@ module.exports = (app) => {
 
   // CREATE
   app.post('/items/create', (req, res) => {
+    const contestId = req.body.contestId
 
-    db.Item.create(req.body).then((item) => {
+    Product.create({
+      id: 1,
+      title: 'Chair',
+      tags: [
+        { name: 'Alpha'},
+        { name: 'Beta'}
+      ]
+    }, {
+      include: [ Tag ]
+    })
+
+    db.Item.create(req.body, { include: {model: Contest}}).then((item) => {
       res.status(200);
       res.json({msg: 'successfully added', item});
     }).catch((err) => {

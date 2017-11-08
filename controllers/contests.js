@@ -36,11 +36,15 @@ module.exports = (app) => {
   });
 
   // UPDATE
-  app.put('/contests/:id/edit', (req, res) => {
-    const contestId = req.body.params;
-    db.Contest.update(contestId).then((contest) => {
-      res.json(200);
-      res.json({msg: 'successfully updated', contest});
+  app.put('/contests/:id/update', (req, res) => {
+    const contestId = req.params.id;
+    const contest = req.body
+    db.Contest.update(contest, {
+      where: { id: contestId }
+    }).then((response) => {
+      if (response.status === 200) {
+        res.status(200)
+      }
     }).catch((err) => {
       if(err) {
         res.json(err)

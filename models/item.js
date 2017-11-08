@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        Item.hasMany(models.Contest);
+        Item.belongsTo(models.Contest);
       }
     }
   });
