@@ -8,15 +8,9 @@ const bcrypt = require('bcrypt');
 // SEQUELIZE
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('beststuff', 'postgres', null, { dialect: 'postgres' });
-
-sequelize
-.authenticate()
-.then(() => {
-  console.log('Connection has been established successfully.');
-})
-.catch(err => {
-  console.error('Unable to connect to the database:', err);
-});
+const sync = () => {
+  return sequelize.sync({ force: true })
+}
 
 // ALLOW CORS
 var allowCrossDomain = function(req, res, next) {
@@ -39,5 +33,8 @@ require('./controllers/users')(app);
 // SERVER
 var port = process.env.PORT || 8000;
 app.listen(port, function () {
+  sync()
+    .then(() => console.log('Database synced!'))
+    .catch( e => console.log(e))
   console.log('BestStuff Server listening on port 8000!');
 });

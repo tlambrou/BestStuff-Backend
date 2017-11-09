@@ -7,7 +7,7 @@ module.exports = (app) => {
   // SHOW
   app.get('/users/:id', (req, res) => {
     const userId = req.params.id;
-    db.User.findById(userId).then((user) => {
+    db.User.findById(userId, { include: [db.Item] }).then((user) => {
       res.json(user);
     });
   });

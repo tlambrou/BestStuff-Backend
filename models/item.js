@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        Item.belongsToMany(models.User, { through: models.Vote });
       }
     }
   });
