@@ -33,8 +33,8 @@ require('./controllers/users')(app);
 // SERVER
 var port = process.env.PORT || 8000;
 app.listen(port, function () {
-  sync()
-    .then(() => console.log('Database synced!'))
-    .catch( e => console.log(e))
   console.log('BestStuff Server listening on port 8000!');
+  sync()
+    .then(() => console.log('... and Database synced!'))
+    .catch( e => console.log(e))
 });
