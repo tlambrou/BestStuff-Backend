@@ -76,9 +76,9 @@ app.put('items/:id/vote-up', function (req, res) {
 });
 
 // VOTE DOWN
-app.put('items/:id/vote-down', function (req, res) {
-    db.Item.findById(req.params.id).exec(function (err, item) {
-
-      item.downVote.push(req.)
-    })
-});
+// app.put('items/:id/vote-down', function (req, res) {
+//     db.Item.findById(req.params.id).exec(function (err, item) {
+//
+//       item.downVote.push(req.)
+//     })
+// });
