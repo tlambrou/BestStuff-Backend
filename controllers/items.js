@@ -64,7 +64,7 @@ module.exports = (app) => {
             res.status(400).send('User is not signed in')
         }else {
             db.Item.findById(req.params.id).then(function (err, item) {
-                console.log("Upvoat uId:", req.user._id);
+                console.log("Upvoat uId:", req.user.id);
                 res.status(200).send('Vote was send successfully!!')
             }).catch((err) => {
                 console.log("Upvote error:", err.message);
@@ -72,17 +72,14 @@ module.exports = (app) => {
             })
         }
     });
+
+    // VOTE DOWN
+    app.put('items/:id/vote-down', function (req, res) {
+        db.Item.findById(req.params.id).exec(function (err, item) {
+
+          item.downVote.push(req.params._id);
+          item.voteScore = post.
+
+        })
+    });
 };
-
-
-
-// VOTE DOWN
-// app.put('items/:id/vote-down', function (req, res) {
-//     db.Item.findById(req.params.id).exec(function (err, item) {
-//
-//       item.downVote.push(req.params.id).exec(function (err, item) {
-//
-//         res
-//       })
-//     })
-// });
