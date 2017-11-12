@@ -21,7 +21,7 @@ module.exports = {
           ], {});
 
           queryInterface.bulkInsert('Items', [
-              { name: "Best Burrito in SF", createdAt: new Date(), updatedAt: new Date(), contestId: 1 },
+              { name: "Best Burrito in SF", createdAt: new Date(), updatedAt: new Date(), contestId: 6 },
           ]);
       return null
   },

@@ -57,4 +57,32 @@ module.exports = (app) => {
     });
   });
 
+    //VOTE UP
+    app.post('items/:id/vote-up', function (req, res) {
+        if( !req.user ) {
+            console.log('Sign in to vote!');
+            res.status(400).send('User is not signed in')
+        }else {
+            db.Item.findById(req.params.id).then(function (err, item) {
+                console.log("Upvoat uId:", req.user.id);
+                res.status(200).send('Vote was send successfully!!')
+            }).catch((err) => {
+                console.log("Upvote error:", err.message);
+                res.status(400).send(err.message)
+            })
+        }
+    });
+    //
+    // // VOTE DOWN
+    // app.put('items/:id/vote-down', function (req, res) {
+    //     db.Item.findById(req.params.id).exec(function (err, item) {
+    //
+    //       item.downVote.push(req.params._id);
+    //       item.voteScore = post.voteTotal - 1;
+    //
+    //       res.status(200);
+    //       console.log("User voted down on item");
+    //
+    //     })
+    // });
 };
