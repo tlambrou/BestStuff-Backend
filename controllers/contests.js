@@ -14,19 +14,6 @@ module.exports = (app) => {
     })
   })
 
-  // SEARCH
-  app.get('/search', function(req, res, next) {
-    db.Contest.findAll({
-        where: {
-            title: {
-                $like: "%" + req.query.term + "%s"
-            }
-        } 
-    }).then((contests) => {
-        // do shit w contests
-    })
-  });
-
   // SHOW
   app.get('/contests/:id', (req, res) => {
     const contestId = req.params.id;
