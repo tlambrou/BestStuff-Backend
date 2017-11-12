@@ -60,7 +60,7 @@ module.exports = (app) => {
 };
 
 //VOTE UP
-app.put('items/:id/vote-up', function (req, res) {
+app.post('items/:id/vote-up', function (req, res) {
     if( !req.user ) {
       console.log('Sign in to vote!');
       res.status(400).send('User is not signed in')
@@ -79,6 +79,9 @@ app.put('items/:id/vote-up', function (req, res) {
 // app.put('items/:id/vote-down', function (req, res) {
 //     db.Item.findById(req.params.id).exec(function (err, item) {
 //
-//       item.downVote.push(req.)
+//       item.downVote.push(req.params.id).exec(function (err, item) {
+//
+//         res
+//       })
 //     })
 // });
