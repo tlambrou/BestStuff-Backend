@@ -58,3 +58,20 @@ module.exports = (app) => {
   });
 
 };
+
+//VOTE UP
+app.put('items/:id/vote-up', function (req, res) {
+    if( !req.user ) {
+      console.log('Sign in to vote!');
+      res.status(400).send('User is not signed in')
+    }else {
+      db.Item.findById(req.params.id).then(function (err, item) {
+          console.log("Upvoat uId:", req.user._id)
+      }).catch((err) => {
+        console.log("Upvote error:", err.message);
+          res.status(400).send(err.message)
+      })
+    }
+});
+
+// VOTE DOWN
