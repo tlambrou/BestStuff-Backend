@@ -72,14 +72,17 @@ module.exports = (app) => {
             })
         }
     });
-
-    // VOTE DOWN
-//     app.put('items/:id/vote-down', function (req, res) {
-//         db.Item.findById(req.params.id).exec(function (err, item) {
-//
-//           item.downVote.push(req.params._id);
-//           item.voteScore = post.
-//
-//         })
-//     });
-// };
+    //
+    // // VOTE DOWN
+    // app.put('items/:id/vote-down', function (req, res) {
+    //     db.Item.findById(req.params.id).exec(function (err, item) {
+    //
+    //       item.downVote.push(req.params._id);
+    //       item.voteScore = post.voteTotal - 1;
+    //
+    //       res.status(200);
+    //       console.log("User voted down on item");
+    //
+    //     })
+    // });
+};
