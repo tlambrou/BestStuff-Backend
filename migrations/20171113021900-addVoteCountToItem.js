@@ -1,5 +1,4 @@
 'use strict';
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.addColumn('Items', 'voteCount', {
@@ -7,7 +6,6 @@ module.exports = {
         type: Sequelize.INTEGER
       }
     );
-
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.

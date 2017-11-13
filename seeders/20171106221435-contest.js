@@ -3,7 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
 
-          queryInterface.bulkInsert('Contest', [
+          queryInterface.bulkInsert('Contests', [
               { name: "Burrito", createdAt: new Date(), updatedAt: new Date(), id: 10000 },
               { name: "Sushi", createdAt: new Date(), updatedAt: new Date(), id: 10001 },
               { name: "Vegan Food", createdAt: new Date(), updatedAt: new Date(), id: 10002 },
@@ -20,14 +20,11 @@ module.exports = {
               { name: "Pie", createdAt: new Date(), updatedAt: new Date(), id: 10013 }
           ], {});
 
-          queryInterface.bulkInsert('Item', [
-              { name: "Best Burrito in SF", createdAt: new Date(), updatedAt: new Date(), contestId: 6 },
-          ]);
       return null
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Contest', null, {});
+    return queryInterface.bulkDelete('Contests', null, {});
     /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.
