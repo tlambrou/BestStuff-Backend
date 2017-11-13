@@ -3,7 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
 
-          queryInterface.bulkInsert('Contests', [
+    return queryInterface.bulkInsert('Contests', [
               { name: "Burrito", createdAt: new Date(), updatedAt: new Date(), id: 10000 },
               { name: "Sushi", createdAt: new Date(), updatedAt: new Date(), id: 10001 },
               { name: "Vegan Food", createdAt: new Date(), updatedAt: new Date(), id: 10002 },
@@ -20,7 +20,6 @@ module.exports = {
               { name: "Pie", createdAt: new Date(), updatedAt: new Date(), id: 10013 }
           ], {});
 
-      return null
   },
 
   down: (queryInterface, Sequelize) => {
