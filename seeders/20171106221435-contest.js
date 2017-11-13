@@ -3,31 +3,31 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
 
-          queryInterface.bulkInsert('Contests', [
-              { name: "Best Burrito in SF", createdAt: new Date(), updatedAt: new Date() },
-              { name: "Best Sushi in SF", createdAt: new Date(), updatedAt: new Date() },
-              { name: "Best Vegan Food in the Bay Area", createdAt: new Date(), updatedAt: new Date() },
-              { name: "Best Hot Dogs in SF", createdAt: new Date(), updatedAt: new Date() },
-              { name: "Best Burgers in Oakland", createdAt: new Date(), updatedAt: new Date() },
-              { name: "Best Brazilian Burger in SF", createdAt: new Date(), updatedAt: new Date() },
-              { name: "Best Mexican food in SF", createdAt: new Date(), updatedAt: new Date() },
-              { name: "Best Churros in SF", createdAt: new Date(), updatedAt: new Date() },
-              { name: "Best Cheesecake in SF", createdAt: new Date(), updatedAt: new Date() },
-              { name: "Best Flan in SF", createdAt: new Date(), updatedAt: new Date() },
-              { name: "Best Indian in SF", createdAt: new Date(), updatedAt: new Date() },
-              { name: "Best Salad in SF", createdAt: new Date(), updatedAt: new Date() },
-              { name: "Best Wraps in SF", createdAt: new Date(), updatedAt: new Date() },
-              { name: "Best Pies in SF", createdAt: new Date(), updatedAt: new Date() }
+          queryInterface.bulkInsert('Contest', [
+              { name: "Burrito", createdAt: new Date(), updatedAt: new Date(), id: 10000 },
+              { name: "Sushi", createdAt: new Date(), updatedAt: new Date(), id: 10001 },
+              { name: "Vegan Food", createdAt: new Date(), updatedAt: new Date(), id: 10002 },
+              { name: "Hot Dogs", createdAt: new Date(), updatedAt: new Date(), id: 10003 },
+              { name: "Burger", createdAt: new Date(), updatedAt: new Date(), id: 10004 },
+              { name: "Brazilian Burger", createdAt: new Date(), updatedAt: new Date(), id: 10005 },
+              { name: "Taco", createdAt: new Date(), updatedAt: new Date(), id: 10006 },
+              { name: "Churro", createdAt: new Date(), updatedAt: new Date(), id: 10007 },
+              { name: "Cheesecake", createdAt: new Date(), updatedAt: new Date(), id: 10008 },
+              { name: "Flan", createdAt: new Date(), updatedAt: new Date(), id: 10009 },
+              { name: "Dosa", createdAt: new Date(), updatedAt: new Date(), id: 10010 },
+              { name: "Salad", createdAt: new Date(), updatedAt: new Date(), id: 10011 },
+              { name: "Wrap", createdAt: new Date(), updatedAt: new Date(), id: 10012 },
+              { name: "Pie", createdAt: new Date(), updatedAt: new Date(), id: 10013 }
           ], {});
 
-          queryInterface.bulkInsert('Items', [
+          queryInterface.bulkInsert('Item', [
               { name: "Best Burrito in SF", createdAt: new Date(), updatedAt: new Date(), contestId: 6 },
           ]);
       return null
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Contests', null, {});
+    return queryInterface.bulkDelete('Contest', null, {});
     /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.

@@ -14,9 +14,9 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "postgres",
-    "password": null,
-    "database": "beststuff",
+    "username": "pzaynaxueebveo",
+    "password": "4a956766c41f30a2d363d244c9850745797ac560779eb79e069114fcdc8df83c",
+    "database": "d7jurc86saljuj",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
