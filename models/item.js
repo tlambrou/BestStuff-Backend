@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     place_id: DataTypes.STRING,
     place_name: {type: DataTypes.STRING, allowNull:false},
     photo_url: DataTypes.STRING,
-    contestId: DataTypes.INTEGER
+    contestId: DataTypes.INTEGER,
+    voteCount: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
