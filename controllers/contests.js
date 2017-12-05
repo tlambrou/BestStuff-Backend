@@ -67,9 +67,9 @@ module.exports = (app) => {
   });
 
 
-  // DESTROY
+  // DELETE
   app.delete('/contests/:id', (req, res) => {
-    const contestId = req.body.params;
+    const contestId = req.params.id;
     db.Contest.destroy(contestId).then((contest) => {
       res.status(200);
       res.json({msg: 'successfully deleted', contest});
