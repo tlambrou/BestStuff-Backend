@@ -66,7 +66,7 @@ module.exports = (app) => {
     db.User.findOne({ where: {username: userToFind } }).then(function(user) {
       bcrypt.compare(req.body.password, user.password, function(err, isMatch) {
         if (isMatch) {
-          var token = jwt.sign({ id: user.id }, "process.env.SECRET", { expiresIn: "60 days" });
+          var token = jwt.sign({ id: user.id }, process.env.SECRET, { expiresIn: "60 days" });
           res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
           res.status(200).send({message: "Successfully logged in"});
           console.log("Logged in!")
